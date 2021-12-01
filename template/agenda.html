@@ -10,7 +10,16 @@
 
         <ul style="font-size: 18px">
             {% for evento in eventos %} <!-- Comandos de Pyhon dentro de chaves -->
-            <li>{{evento.titulo}} - {{evento.get_data_evento}}</li>
+
+            <li>Titulo: {{evento.titulo}} - Data: {{evento.get_data_evento}}</li>
+            <li>Descrição: {{evento.descricao}}</li>
+            <li>Local: {{evento.local}}</li>
+            <li>
+                <a href="evento/?id={{evento.id}}">Editar</a> /
+                <a href="evento/delete/{{ evento.id}}/">Excluir</a>
+            </li>
+            <p>
+
             {% endfor %}
         </ul>
     {% endblock %}
