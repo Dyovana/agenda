@@ -18,3 +18,6 @@ class Evento(models.Model):
         # Faz o titulo aparecer mesmo sem clicar nele
         return self.titulo
 
+    def get_data_evento(self):
+        return self.data_evento.strftime('%d/%m/%Y %H:%MHrs')
+
