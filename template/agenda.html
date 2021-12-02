@@ -10,13 +10,17 @@
 
         <ul style="font-size: 18px">
             {% for evento in eventos %} <!-- Comandos de Pyhon dentro de chaves -->
+             <li>
+                <div style={% if evento.get_evento_atrasado %}
+                 "color:red"
+                 {% endif %}>
+                    Titulo: {{evento.titulo}} - Data: {{evento.get_data_evento}}
+                    Descrição: {{evento.descricao}}
+                    Local: {{evento.local}}
 
-            <li>Titulo: {{evento.titulo}} - Data: {{evento.get_data_evento}}</li>
-            <li>Descrição: {{evento.descricao}}</li>
-            <li>Local: {{evento.local}}</li>
-            <li>
-                <a href="evento/?id={{evento.id}}">Editar</a> /
-                <a href="evento/delete/{{ evento.id}}/">Excluir</a>
+                    <a href="evento/?id={{evento.id}}">Editar</a> /
+                    <a href="evento/delete/{{ evento.id}}/">Excluir</a>
+                </div>
             </li>
             <p>
 
