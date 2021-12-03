@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Agenda</title>
+    {% load static %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Login</h1>
+    <h1 align="center">Login</h1>
     <div align="center">
         <form action="submit" method="POST">{% csrf_token%}
-            <label>Usuário</label>
+            <label>Usuário(usuario)</label><br>
             <input type="text" name="username">
-
-            <label>Senha</label>
+            <p>
+            <label>Senha(@agenda963)</label><br>
             <input type="password" name="password">
-
-            <button type="submit">Entrar</button>
+            <p>
+            <button type="submit" id="btnl">Entrar</button>
         </form>
     </div>
 

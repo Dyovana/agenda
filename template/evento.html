@@ -2,33 +2,39 @@
 
 {% block content %}
 
-<h2>Evento</h2>
+<!-- Lê arquivos estaticos  -->
+{% load static %}
+<link href="{% static 'css/evento.css' %}" rel="stylesheet">
 
-<form action="submit" method="POST">{% csrf_token %}
-    <input type="number", name="id_evento" value="{{ evento.id}}" hidden>
+<h2 align="center">Evento</h2>
+<div class="id-form">
+    <form action="submit" method="POST">{% csrf_token %}
+        <input type="number" name="id_evento" value="{{ evento.id}}" hidden>
 
-    <label>Titulo</label>
-    <input type="text" name="titulo" size="23" value="{{evento.titulo}}">
+        <label>Titulo</label><br>
+        <input type="text" name="titulo" size="23" value="{{evento.titulo}}">
+        <br>
+        <label>Data do evento</label><br>
+        <input type="datetime-local" name="data_evento" value="{{evento.get_data_input_evento}}" size="23">
 
-    <p>
-    <label>Data do evento</label>
-    <input type="datetime-local" name="data_evento" value="{{evento.get_data_input_evento}}">
+        <br>
+        <label>Descrição</label><br>
+        <textarea name="descricao" rows="5" cols="25">{{evento.descricao}}</textarea>
 
-    <p>
-    <label>Descrição</label><br>
-    <textarea name="descricao" rows="5" cols="25">{{evento.descricao}}</textarea>
+        <br>
+        <label>Local</label><br>
+        <input type="text" name="local" value="{{evento.local}}" size="23">
 
-    <p>
-    <label>Local</label><br>
-    <input type="text" name="local" value="{{evento.local}}">
+        <p>
+        <a href="evento/">
+              <button type="submit" class="btn btn-info">Salvar</button>
+        </a>
 
-    <p>
-    <button type="submit">Salvar</button>
-
-    <a href="/">
-        <button type="button">Cancelar</button>
-    </a>
-</form>
+        <a href="/">
+            <button type="button" class="btn btn-dark">Cancelar</button>
+        </a>
+    </form>
+</div>
 
 
 {% endblock %}

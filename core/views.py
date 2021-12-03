@@ -50,6 +50,7 @@ def lista_eventos(request):
 
     return render(request, 'agenda.html', dados)
 
+
 @login_required(login_url='/login/')
 def evento(request):
     id_evento = request.GET.get('id')

@@ -1,29 +1,50 @@
 <!-- Extendendo o conteúdo do model-pahe.html  -->
 {% extends "model-page.html"%}
 
-
     {% block content %}
-        <h2>Agendamentos</h2>
-        <a href="evento/">
-            <button type="button">Novo Evento</button>
-        </a>
 
-        <ul style="font-size: 18px">
-            {% for evento in eventos %} <!-- Comandos de Pyhon dentro de chaves -->
-             <li>
-                <div style={% if evento.get_evento_atrasado %}
-                 "color:red"
-                 {% endif %}>
-                    Titulo: {{evento.titulo}} - Data: {{evento.get_data_evento}}
-                    Descrição: {{evento.descricao}}
-                    Local: {{evento.local}}
+        <!-- Lê arquivos estaticos  -->
+        {% load static %}
+        <link href="{% static 'css/agenda.css' %}" rel="stylesheet">
 
-                    <a href="evento/?id={{evento.id}}">Editar</a> /
-                    <a href="evento/delete/{{ evento.id}}/">Excluir</a>
-                </div>
-            </li>
-            <p>
+        <h2 align="center" style="font-size: 35px;">Agendamentos</h2>
+        <div align="center">
+                <a href="evento/">
+                    <button type="button" class="btn btn-secondary">Novo Evento</button><br>
+                </a>
+        </div><br>
 
-            {% endfor %}
-        </ul>
+
+        <div>
+
+            <ul class="lista">
+                <ul>
+                    <li>Agendamentos em vermelho são antigos, você pode excluí-los </li>
+                </ul><br>
+
+                {% for evento in eventos %} <!-- Comandos de Pyhon dentro de chaves -->
+
+                 <li>
+                    <div id="dados" style={% if evento.get_evento_atrasado %} "color:red" {% endif %}>
+                        <b>Titulo: </b>{{evento.titulo}} <br>
+                        <b>Data: </b>{{evento.get_data_evento}}<br>
+                        <b>Descrição: </b>{{evento.descricao}}<br>
+                        <b>Local: </b>{{evento.local}}<br>
+                        <br>
+
+                        <a href="evento/?id={{evento.id}}">
+                            <button type="button" class="btn btn-info">Editar</button>
+                        </a>
+                        <a href="evento/delete/{{ evento.id}}/">
+                            <button type="button" class="btn btn-danger">Excluir</button>
+                        </a>
+                        <p></p>
+                    </div>
+                     <p></p>
+                 </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endblock %}
+
+
